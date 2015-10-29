@@ -20,7 +20,7 @@ export default Backbone.Router.extend({
     "people"      : "showPeople",
     "person/:id"  : "showPerson",
     "addnew"      : "addNew"
-  }, //end of routes
+  },
 
   initialize(appElement) {
     this.$el = appElement;
@@ -34,7 +34,7 @@ export default Backbone.Router.extend({
 
     this.$el.on('click', '.back-button', (event) => {
       let $button = $(event.currentTarget);
-      let route = $button.data('to');  //data-to="people"
+      let route = $button.data('to');  
       this.navigate(route, {trigger: true});
     });
 
@@ -43,8 +43,8 @@ export default Backbone.Router.extend({
       this.navigate("addnew", {trigger: true});
     });
 
-    this.$el.on('click', '.addUser', (event) => { //on click of the submit button we will get the information in the different text boxes
-      // console.log('submit');
+    this.$el.on('click', '.addUser', (event) => { 
+      
       let Name = $('.Name').val();
       let residence = $('.residence').val();
       let email = $('.email').val();
@@ -54,7 +54,6 @@ export default Backbone.Router.extend({
       let drinkofchoice = $('.drinkofchoice').val();
       let picture = $('.picture').val();
       
-      //create a new instance from the PersonModel Constructor which takes the values from our form
       let newUser = new PersonModel ({
       Name: Name,
       email: email,
@@ -64,45 +63,39 @@ export default Backbone.Router.extend({
       Hobby: Hobby,
       drinkofchoice: drinkofchoice,
       picture: picture,
-      }); //end of newUser
+      }); 
       console.log(newUser);
 
-      this.collection.add(newUser); //add the newUser object 
-      newUser.save().then(() => { //save it to parse
+      this.collection.add(newUser); 
+      newUser.save().then(() => { 
         console.log('saved');
-        this.navigate("", {trigger:true}); //go back to the homepage
-      }); //end of .save().then()
+        this.navigate("", {trigger:true}); 
+      }); 
 
-     });  //end of $el.on click .addUser
+     });  
    
-}, //end of initialize
+}, 
 
   start() {
     Backbone.history.start();
     return this;
-  }, //end of start()
+  }, 
 
   showSpinner() {
     this.$el.html( Spinner() );
-  }, //end of showSpinner()
+  }, 
 
   redirectToPeople() {
     this.navigate('people', {
       replace: true,
       trigger: true
     });
-  }, //end of redirectToPeople()
+  }, 
 
   showPeople() {
     this.showSpinner();
 
-    // this.collection.fetch().then(function() {
-    //   this is equivalent to below
-    //   only below has `this` auto bound
-    //   // `this` would be either null or window
-    // });
     this.collection.fetch().then(() => {
-      // `this` === the router instance
 
       this.$el.html(
         PeopleView(
@@ -110,13 +103,12 @@ export default Backbone.Router.extend({
         )
       );
     });
-  }, //end of showPeople()
+  }, 
 
   showPerson(id) {
     let person = this.collection.get(id);
 
     if (person) {
-      // we found the person from the collection
       this.$el.html(
         PersonView(
           person.toJSON()
@@ -133,16 +125,16 @@ export default Backbone.Router.extend({
         );
       });
     }
-  }, //end of showPerson(id)
+  }, 
 
   addNew() { 
     
     this.showSpinner();
     this.$el.html(
       AddNewView(
-        ) //end of AddNewView
-      ) //end $el.html
+        ) 
+      ) 
     
-  } //end of addNew
+  } 
 
-}); //end of Backbone.Router.extend 
+}); 

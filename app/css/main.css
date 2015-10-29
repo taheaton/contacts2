@@ -2018,6 +2018,18 @@
 .fa-fonticons:before {
   content: ""; }
 
+body {
+  background-color: lightgrey;
+  background-image: -webkit-linear-gradient(bottom, lightgrey, grey);
+  background-image: linear-gradient(to top,lightgrey, grey); }
+
+.title {
+  text-align: center; }
+
+.sub {
+  text-align: center;
+  font-size: 18pt; }
+
 img {
   max-width: 250px;
   margin-left: auto;
@@ -2030,17 +2042,29 @@ img {
   max-width: 40em;
   margin-left: auto;
   margin-right: auto;
-  background-color: navy;
-  background-image: -webkit-linear-gradient(bottom, navy, lightblue);
-  background-image: linear-gradient(to top,navy, lightblue);
-  font-family: 'Poiret One', cursive;
+  background-color: blue;
+  background-image: -webkit-linear-gradient(bottom, blue, lightblue);
+  background-image: linear-gradient(to top,blue, lightblue);
+  font-family: 'Poiret One', serif;
   border: 10px solid darkgreen;
   border-radius: 50px;
   box-shadow: 0px 0px 10px 5px rgba(68, 85, 102, 0.5);
   length: 100px;
   font-size: 16pt; }
 
-.fa-user:hover a {
-  display: inline; }
+li {
+  cursor: pointer; }
+
+.add-user {
+  align: center; }
+
+ul {
+  list-style: none;
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 2;
+  column-gap: 20px; }
 
 /*# sourceMappingURL=main.css.map */

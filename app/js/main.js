@@ -361,12 +361,12 @@ Object.defineProperty(exports, '__esModule', {
 });
 function processData(data) {
   return data.map(function (item) {
-    return '\n      <li class="person-list-item" data-person-id="' + item.objectId + '">\n        <span>' + item.Name + '</span>:  friends call me:  <span>' + item.nickname + '</span>\n      </li>\n    ';
+    return '\n      <li class="person-list-item" data-person-id="' + item.objectId + '">\n        <span>' + item.Name + '</span>:       (nickname:  <span>' + item.nickname + '</span>\n      </li>\n    ';
   }).join('');
 }
 
 exports['default'] = function (data) {
-  return '\n    <div class="people-list">\n      <h1>People</h1>\n      <ul>' + processData(data) + '</ul>\n      <button class="add-user">Add Contact</button>\n    </div>\n  ';
+  return '\n    <div class="people-list">\n      <h1 class="title">My Scary Homies</h1>\n      <h2 class = "sub">My Podgies Be Cheezin</h2>\n            <button class="add-user">Add Contact</button>\n      <ul>' + processData(data) + '</ul>\n    </div>\n  ';
 };
 
 module.exports = exports['default'];
