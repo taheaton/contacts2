@@ -1,10 +1,4 @@
 @charset "UTF-8";
-html {
-  box-sizing: border-box; }
-
-*, *::after, *::before {
-  box-sizing: inherit; }
-
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2024,7 +2018,29 @@ html {
 .fa-fonticons:before {
   content: ""; }
 
-body {
-  background: #e2ebf3; }
+img {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  float: right;
+  border-radius: 41px;
+  max-height: 250px; }
+
+.app {
+  max-width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: navy;
+  background-image: -webkit-linear-gradient(bottom, navy, lightblue);
+  background-image: linear-gradient(to top,navy, lightblue);
+  font-family: 'Poiret One', cursive;
+  border: 10px solid darkgreen;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px 5px rgba(68, 85, 102, 0.5);
+  length: 100px;
+  font-size: 16pt; }
+
+.fa-user:hover a {
+  display: inline; }
 
 /*# sourceMappingURL=main.css.map */

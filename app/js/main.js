@@ -361,7 +361,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 function processData(data) {
   return data.map(function (item) {
-    return '\n      <li class="person-list-item" data-person-id="' + item.objectId + '">\n        <span>' + item.Name + '</span>\n      </li>\n    ';
+    return '\n      <li class="person-list-item" data-person-id="' + item.objectId + '">\n        <span>' + item.Name + '</span>:  friends call me:  <span>' + item.nickname + '</span>\n      </li>\n    ';
   }).join('');
 }
 
