@@ -71,9 +71,9 @@ new _router2['default']($app).start();
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var APP_ID = 'sgfFjZFANgdFNKxWNUtj9uaku1iY6iSeOG7NMIvq';
-var API_KEY = 'OiMGIbuQDeIdvwSxNDn1zj9XyBNF9xyCaDF55kXx';
-var APP_URL = 'https://api.parse.com/1/classes/Characters';
+var APP_ID = 'ByXUCRrnspC3USquH3dFzHgQSmOWvQ3pj10coJWe';
+var API_KEY = 'sXuKkgfdGMOkssUQ67J0I9zVMRrubUP4tSLa7t3Z';
+var APP_URL = 'https://api.parse.com/1/classes/trips';
 
 //update my ID and Key for my parse ContactList
 
@@ -189,7 +189,7 @@ exports['default'] = _backbone2['default'].Router.extend({
     "people": "showPeople",
     "person/:id": "showPerson",
     "addnew": "addNew"
-  }, //end of routes
+  },
 
   initialize: function initialize(appElement) {
     var _this = this;
@@ -205,7 +205,7 @@ exports['default'] = _backbone2['default'].Router.extend({
 
     this.$el.on('click', '.back-button', function (event) {
       var $button = (0, _jquery2['default'])(event.currentTarget);
-      var route = $button.data('to'); //data-to="people"
+      var route = $button.data('to');
       _this.navigate(route, { trigger: true });
     });
 
@@ -215,8 +215,7 @@ exports['default'] = _backbone2['default'].Router.extend({
     });
 
     this.$el.on('click', '.addUser', function (event) {
-      //on click of the submit button we will get the information in the different text boxes
-      // console.log('submit');
+
       var Name = (0, _jquery2['default'])('.Name').val();
       var residence = (0, _jquery2['default'])('.residence').val();
       var email = (0, _jquery2['default'])('.email').val();
@@ -226,7 +225,6 @@ exports['default'] = _backbone2['default'].Router.extend({
       var drinkofchoice = (0, _jquery2['default'])('.drinkofchoice').val();
       var picture = (0, _jquery2['default'])('.picture').val();
 
-      //create a new instance from the PersonModel Constructor which takes the values from our form
       var newUser = new _resources.Person({
         Name: Name,
         email: email,
@@ -236,50 +234,42 @@ exports['default'] = _backbone2['default'].Router.extend({
         Hobby: Hobby,
         drinkofchoice: drinkofchoice,
         picture: picture
-      }); //end of newUser
-      console.log(newUser);
+      });
 
-      _this.collection.add(newUser); //add the newUser object
+      _this.collection.add(newUser);
       newUser.save().then(function () {
-        //save it to parse
-        console.log('saved');
-        _this.navigate("", { trigger: true }); //go back to the homepage
-      }); //end of .save().then()
-    }); //end of $el.on click .addUser
-  }, //end of initialize
+
+        _this.navigate("", { trigger: true });
+      });
+    });
+  },
 
   start: function start() {
     _backbone2['default'].history.start();
     return this;
-  }, //end of start()
+  },
 
   showSpinner: function showSpinner() {
     this.$el.html((0, _views.Spinner)());
-  }, //end of showSpinner()
+  },
 
   redirectToPeople: function redirectToPeople() {
     this.navigate('people', {
       replace: true,
       trigger: true
     });
-  }, //end of redirectToPeople()
+  },
 
   showPeople: function showPeople() {
     var _this2 = this;
 
     this.showSpinner();
 
-    // this.collection.fetch().then(function() {
-    //   this is equivalent to below
-    //   only below has `this` auto bound
-    //   // `this` would be either null or window
-    // });
     this.collection.fetch().then(function () {
-      // `this` === the router instance
 
       _this2.$el.html((0, _views.People)(_this2.collection.toJSON()));
     });
-  }, //end of showPeople()
+  },
 
   showPerson: function showPerson(id) {
     var _this3 = this;
@@ -287,7 +277,6 @@ exports['default'] = _backbone2['default'].Router.extend({
     var person = this.collection.get(id);
 
     if (person) {
-      // we found the person from the collection
       this.$el.html((0, _views.Person)(person.toJSON()));
     } else {
       this.showSpinner();
@@ -296,17 +285,15 @@ exports['default'] = _backbone2['default'].Router.extend({
         _this3.$el.html((0, _views.Person)(person.toJSON()));
       });
     }
-  }, //end of showPerson(id)
+  },
 
   addNew: function addNew() {
 
     this.showSpinner();
-    this.$el.html((0, _views.AddNew)() //end of AddNewView
-    ); //end $el.html
-  } //end of addNew
+    this.$el.html((0, _views.AddNew)());
+  }
 
 });
-//end of Backbone.Router.extend
 module.exports = exports['default'];
 //views
 
@@ -361,12 +348,12 @@ Object.defineProperty(exports, '__esModule', {
 });
 function processData(data) {
   return data.map(function (item) {
-    return '\n      <li class="person-list-item" data-person-id="' + item.objectId + '">\n        <span>' + item.Name + '</span>:       (nickname:  <span>' + item.nickname + '</span>\n      </li>\n    ';
+    return '\n      <li class="person-list-item" data-person-id="' + item.objectId + '">\n        <span>' + item.location + '</span>:       (nickname:  <span>' + item.nickname + '</span>\n      </li>\n    ';
   }).join('');
 }
 
 exports['default'] = function (data) {
-  return '\n    <div class="people-list">\n      <h1 class="title">My Scary Homies</h1>\n      <h2 class = "sub">My Podgies Be Cheezin</h2>\n            <button class="add-user">Add Contact</button>\n      <ul>' + processData(data) + '</ul>\n    </div>\n  ';
+  return '\n    <div class="people-list">\n      <h1 class="title">My Scary Homies</h1>\n      <h2 class = "sub">My Podgies Be Cheezin</h2>\n            <button class="add-user">Add Contact</button>\n      <ul class="people"' + processData(data) + '</ul>\n    </div>\n  ';
 };
 
 module.exports = exports['default'];

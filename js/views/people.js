@@ -2,7 +2,7 @@ function processData(data) {
   return data.map(function(item){
     return `
       <li class="person-list-item" data-person-id="${item.objectId}">
-        <span>${item.Name}</span>:       (nickname:  <span>${item.nickname}</span>
+        <span>${item.location}</span>:       (nickname:  <span>${item.nickname}</span>
       </li>
     `;
   }).join('');

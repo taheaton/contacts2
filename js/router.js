@@ -64,11 +64,11 @@ export default Backbone.Router.extend({
       drinkofchoice: drinkofchoice,
       picture: picture,
       }); 
-      console.log(newUser);
+      
 
       this.collection.add(newUser); 
       newUser.save().then(() => { 
-        console.log('saved');
+        
         this.navigate("", {trigger:true}); 
       }); 
 

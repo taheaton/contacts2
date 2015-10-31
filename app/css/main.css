@@ -2056,7 +2056,8 @@ li {
   cursor: pointer; }
 
 .add-user {
-  align: center; }
+  margin-left: auto;
+  margin-right: auto; }
 
 ul {
   list-style: none;
